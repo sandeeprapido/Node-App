@@ -19,6 +19,12 @@ pipeline{
         }        
     }
     post{
+        always {
+              githubPRComment comment: githubPRMessage('''Build
+                ${BUILD_NUMBER}
+                ${BUILD_STATUS}''')
+
+        }
         failure {
             echo 'This will run only if failed'
             script {
