@@ -7,8 +7,7 @@ pipeline{
                 step([$class: 'GitHubIssueNotifier',
                   issueAppend: true,
                   issueLabel: '',
-                  issueTitle: '$JOB_NAME $BUILD_DISPLAY_NAME failed'])
-            }
+                  issueTitle: '$JOB_NAME $BUILD_DISPLAY_NAME failed'])              
             }
         }
         stage("Code Quality Check up"){
@@ -19,6 +18,6 @@ pipeline{
   -Dsonar.host.url=http://localhost:9000 \\
   -Dsonar.login=70aaa33a26be4f808e70ef28382db29c18ecb942'''
             }
-        }               
     }
 }
+        
