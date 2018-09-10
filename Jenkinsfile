@@ -14,7 +14,11 @@ pipeline{
   -Dsonar.host.url=http://localhost:9000 \\
   -Dsonar.login=70aaa33a26be4f808e70ef28382db29c18ecb942'''
             }
+        }        
+    }
+    post{
+        failure {
+            echo 'This will run only if failed'
         }
-        
     }
 }
