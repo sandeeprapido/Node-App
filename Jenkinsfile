@@ -15,6 +15,14 @@ pipeline{
   -Dsonar.login=70aaa33a26be4f808e70ef28382db29c18ecb942'''
             }
         }
+        stage("Publish"){
+            steps{
+                step([$class: 'GitHubIssueNotifier',
+                  issueAppend: true,
+                  issueLabel: '',
+                  issueTitle: '$JOB_NAME $BUILD_DISPLAY_NAME failed'])
+            }
+        }
         
     }
 }
