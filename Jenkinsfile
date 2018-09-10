@@ -3,7 +3,7 @@ pipeline{
     stages {
         stage("Unit tests"){
             steps{
-                step(sh '''npm install && npm test''')
+                sh '''npm install && npm test'''
                 step([$class: 'GitHubIssueNotifier',
                   issueAppend: true,
                   issueLabel: '',
