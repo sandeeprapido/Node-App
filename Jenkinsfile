@@ -18,14 +18,7 @@ pipeline{
             }
         }        
     }
-    post{
-        always {
-              githubPRComment comment: githubPRMessage('''Build
-${BUILD_NUMBER}
-${BUILD_STATUS}'''), errorHandler: statusOnPublisherError('UNSTABLE'), statusVerifier: allowRunOnStatus('SUCCESS')
-
-
-        }
+    post{        
         failure {
             echo 'This will run only if failed'
             script {
