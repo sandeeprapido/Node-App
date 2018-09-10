@@ -25,7 +25,7 @@ pipeline{
             echo 'This will run only if failed'
             script {
                 properties([[$class: 'GithubProjectProperty',
-                            projectUrlStr: '<GitHub repo URL>']])
+                            projectUrlStr: 'https://github.com/SandeepVaman/Node-App']])
             }
             step([$class: 'GitHubIssueNotifier',
       issueAppend: true,
