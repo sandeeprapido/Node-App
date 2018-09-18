@@ -1,4 +1,4 @@
-const { events, Job } = require("brigadier");
+const { events, Job } =  require("brigadier");
 
 events.on("pull_request", function(e, project) {
   console.log("received push for commit " + e.commit);
