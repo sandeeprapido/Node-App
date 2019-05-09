@@ -44,7 +44,7 @@ pipeline{
         stage("Push Docker image"){
             environment{
                 registry = "asia.gcr.io/obelus-x1/node-app" 
-                registryCredential = 'jenkins-gcr-credentials'
+                registryCredential = 'v3rapido'
             }
             steps{
                 script{
