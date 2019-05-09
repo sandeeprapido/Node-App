@@ -10,7 +10,7 @@ pipeline{
         }
         stage("Code Quality Check up"){
             environment {
-                 scannerHome = tool 'SonarQubeScanner'
+                 scannerHome = tool 'SonarScanner'
             }
             steps{            
                  withSonarQubeEnv('SonarRapido'){
