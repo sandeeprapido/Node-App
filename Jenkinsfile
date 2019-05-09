@@ -9,14 +9,14 @@ pipeline{
             }
         }
         stage("Code Quality Check up"){
-                 script{
-                    def scannerHome = tool 'SonarScanner';
-                 }                
+            steps{
+                 def scannerHome = tool 'SonarScanner';             
                  withSonarQubeEnv('SonarRapido'){
                  sh '''${scannerHome}/bin/sonar-scanner \\
                  -Dsonar.projectKey=Node-App\\
                  -Dsonar.sources=.'''
                  }
+            }
         }        
     }
     post{        
