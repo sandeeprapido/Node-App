@@ -14,7 +14,7 @@ pipeline{
                  withSonarQubeEnv('SonarRapido'){
                  sh '''${scannerHome}/bin/sonar-scanner \\
                  -Dsonar.projectKey=Node-App\\
-                 -Dsonar.sources=. '''
+                 -Dsonar.sources=.'''
                }
             }
         }        
