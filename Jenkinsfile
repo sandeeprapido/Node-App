@@ -12,7 +12,9 @@ pipeline{
             steps{
                 def scannerHome = tool 'SonarQube Scanner 2.8';
                  withSonarQubeEnv('SonarRapido'){
-                 sh "${scannerHome}/bin/sonar-scanner"
+                 sh '''${scannerHome}/bin/sonar-scanner \\
+                 -Dsonar.projectKey=Node-App\\
+                 -Dsonar.sources=. '''
                }
             }
         }        
