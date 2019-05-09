@@ -33,14 +33,22 @@ pipeline{
         }
         stage("Build docker image") {
             environment {
-                registry = "docker_hub_account/repository_name"
-                registryCredential = 'dockerhub'
+                registry = "asia.gcr.io/obelus-x1/node-app"               
              }
             steps {
-                script {
-                    def customImage = docker.build("test:${env.BUILD_ID}", "--build-arg REPO_NAME=${env.JOB_NAME} --build-arg COMMIT_ID=${env.COMMIT_ID} .")
-                    customImage.push()
+                    def customImage = docker.build("${env.registry}:${env.BUILD_ID}", "--build-arg REPO_NAME=${env.JOB_NAME} --build-arg COMMIT_ID=${env.COMMIT_ID} .")
+            }
         }
+        stage("Push Docker image"){
+            environment{
+                registry = "asia.gcr.io/obelus-x1/node-app" 
+                registryCredential = 'obelus-x1-d37b6ab25abb.json'
+            }
+            steps{
+                docker.withRegistry("${env.registry}", "${env.registryCredential}") {
+                customImage.push("${env.BUILD_NUMBER}")
+                customImage.push("latest")
+                }            
             }
         }
     }
