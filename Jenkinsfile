@@ -36,7 +36,7 @@ pipeline{
                 registry = "asia.gcr.io/obelus-x1/node-app"               
              }
             steps {
-                    def customImage = docker.build("${env.registry}:${env.BUILD_ID}", "--build-arg REPO_NAME=${env.JOB_NAME} --build-arg COMMIT_ID=${env.COMMIT_ID} .")
+                   customImage = docker.build("${env.registry}:${env.BUILD_ID}", "--build-arg REPO_NAME=${env.JOB_NAME} --build-arg COMMIT_ID=${env.COMMIT_ID} .")
             }
         }
         stage("Push Docker image"){
