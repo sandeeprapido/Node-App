@@ -38,7 +38,7 @@ pipeline{
              }
             steps {
                 script {
-                    def customImage = docker.build("${env.JOB_NAME}:${env.BUILD_ID}", "--build-arg REPO_NAME=${env.JOB_NAME} --build-arg COMMIT_ID=${env.COMMIT_ID} .")
+                    def customImage = docker.build("test:${env.BUILD_ID}", "--build-arg REPO_NAME=${env.JOB_NAME} --build-arg COMMIT_ID=${env.COMMIT_ID} .")
                     customImage.push()
         }
             }
