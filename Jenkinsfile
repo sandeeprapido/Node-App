@@ -48,7 +48,7 @@ pipeline{
             }
             steps{
                 script{
-                    docker.withRegistry("https://${env.dockerregistry}") {
+                    docker.withRegistry("https://${env.dockerregistry}","gcr:${env.registryCredential}") {
                     customImage.push("${env.BUILD_NUMBER}")
                     customImage.push("latest")
                     }
