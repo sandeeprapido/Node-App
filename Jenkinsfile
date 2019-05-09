@@ -43,12 +43,12 @@ pipeline{
         }
         stage("Push Docker image"){
             environment{
-                registry = "asia.gcr.io/obelus-x1/node-app" 
+                dockerregistry = "asia.gcr.io/obelus-x1
                 registryCredential = 'v3rapido'
             }
             steps{
                 script{
-                    docker.withRegistry("https://${env.registry}") {
+                    docker.withRegistry("https://${env.dockerregistry}") {
                     customImage.push("${env.BUILD_NUMBER}")
                     customImage.push("latest")
                     }
