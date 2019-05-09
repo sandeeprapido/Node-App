@@ -43,7 +43,7 @@ pipeline{
         }
         stage("Push Docker image"){
             environment{
-                dockerregistry = "asia.gcr.io/obelus-x1
+                dockerregistry = "asia.gcr.io/obelus-x1"
                 registryCredential = 'v3rapido'
             }
             steps{
