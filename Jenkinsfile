@@ -5,6 +5,7 @@ pipeline{
         stage("Unit tests"){
             steps{
                 nodejs('nodejs') {
+                        sh '''env'''
                         sh '''npm install && npm test'''
                 }                          
             }
